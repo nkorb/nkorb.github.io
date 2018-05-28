@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Discovering new iproute2 features (Part I)</title>
-      <link>https://blog.nkorb.gr/blog/discovering-iproute2/</link>
+      <title>Discovering iproute2 features (Part I)</title>
+      <link>https://blog.nkorb.gr/blog/iproute2-feat-p1/</link>
       <pubDate>Mon, 28 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.nkorb.gr/blog/discovering-iproute2/</guid>
+      <guid>https://blog.nkorb.gr/blog/iproute2-feat-p1/</guid>
       <description>iproute2 is the standard networking toolbox for Linux, deprecating the unmaintained net-tools. iproute2 includes the known ip tool, which most admins and engineers use almost every day in order to see and manipulate a host&amp;rsquo;s network configuration. Today, I&amp;rsquo;m going to present some nice (and sometimes undocumented) features of ip that I was not aware of until lately.
 The following commands were all tested on a Debian Stretch box, running iproute2 version 4.</description>
     </item>
