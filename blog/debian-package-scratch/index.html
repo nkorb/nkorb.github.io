@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content="Hugo 0.41" />
+		<title>Creating a Debian package from scratch - /home/nkorb</title>
+
+		<meta name="description" content="At work, we use exclusively Debian across our fleet. We try to keep up with the latest stable distribution, without relying on third-party repositories. Also, we try to package every piece of software we&rsquo;re installing on our boxes, including our IaaS cloud software Synnefo and tools that are not found in upstream Debian repos (i.e. check_mk). So, it is not uncommon that we have to create a Debian deb package from scratch.">
+
+
+		
+		
+		
+		<link rel="stylesheet" href="/css/ui.min.css"/>
+		
+		
+		
+
+		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
+
+		
+
+		<style>
+	a { color: #ff8181; }
+	blockquote {
+		border-left-color: #ff8181;
+		border-right-color: #ff8181; }
+	.bar a:hover {
+		color: #ff8181;
+		text-decoration: none; }
+	.sep {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		margin-left:0;
+		width: 24rem;
+		border-top: 2px solid #ff8181; }
+</style>
+
+	</head>
+
+<body>
+<header class="container no-print">
+	<div class="u-header">
+		<nav class="bar">
+	<ul><li>
+			<a href="/">
+				<img class="icon-text" src="/img/prev.svg"/>
+			</a>
+		</li><li><a href="/whoami/">Whoami</a></li></ul>
+</nav>
+
+	</div>
+</header>
+<main class="container">
+
+<article>
+	<header><hgroup id="brand">
+	<h1>Creating a Debian package from scratch</h1>
+	<h5>
+		
+		<time datetime="2018-05-21 00:00:00 &#43;0000 UTC">May 21, 2018</time>
+		<span class="no-print">
+			<span>
+	</h5>
+	
+</hgroup>
+<hr class="sep" />
+</header>
+	<p>At <a href="https://grnet.gr">work</a>, we use exclusively Debian across our fleet. We try
+to keep up with the latest stable distribution, without relying on third-party
+repositories. Also, we try to package every piece of software we&rsquo;re installing
+on our boxes, including our IaaS cloud software <a href="https://synnefo.org">Synnefo</a>
+and tools that are not found in upstream Debian repos (i.e.
+<a href="https://mathias-kettner.de/check_mk.html">check_mk</a>). So, it is not uncommon
+that we have to create a Debian deb package from scratch.</p>
+
+<p>After dealing with some custom packages, I tried to create and build a Debian
+package without using any tools, except <code>dch(1)</code> and <code>dpkg-buildpackage(1)</code>.
+The following is surely not the recommended way to create a package from
+scratch, but I was quite curious about the internals and decided to dig a bit
+deeper. Everything was done on a jessie box.</p>
+
+<p>Before starting you&rsquo;ll need to install some packages:</p>
+
+<pre><code>apt install dpkg-deb devscripts build-essential
+</code></pre>
+
+<p>First of all, I cd&rsquo;ed into the repo of the software that I want to package. In
+our case, it&rsquo;s a dummy repo with some Markdown files that will end up in
+<code>/opt</code>.</p>
+
+<p><code>cd path/to/repo</code> and I created a tarball of my repo, which ideally should be
+your &lsquo;upstream&rsquo; tarball:</p>
+
+<pre><code>git archive -o /tmp/deb/koko_1.0.orig.tar.gz HEAD
+</code></pre>
+
+<p>I&rsquo;m going to assume that the upstream version of our package is 1.0.</p>
+
+<p>Our git tree looks like this:</p>
+
+<pre><code>$ tree .
+.
+└── lala
+    ├── file0.html
+    ├── file1.html
+    └── file2.html
+
+1 directory, 3 files
+</code></pre>
+
+<p>At work, we use a builder VM with multiple chroots, where all packaging is
+being done. So, let&rsquo;s copy the &ldquo;upstream&rdquo; tarball there and ssh in.</p>
+
+<pre><code>scp /tmp/deb/koko_1.0.orig.tar.gz our.fancy.builder.vm:
+ssh our.fancy.builder.vm
+</code></pre>
+
+<p>Now, we need a directory where all package files will live. This directory must
+have a name of <code>[package_name]-[upstream_version]</code>.</p>
+
+<pre><code>mkdir koko-1.0
+</code></pre>
+
+<p>and now we&rsquo;re going to extract the tarball in there:</p>
+
+<pre><code>tar xfv koko_1.0.tar.gz -C koko-1.0
+</code></pre>
+
+<p>All stuff needed for Debian&rsquo;s tools to finally build the package, live inside
+the debian directory:</p>
+
+<pre><code>cd koko-1.0
+mkdir debian
+</code></pre>
+
+<p>All packages, have a <code>debian/compat</code> file, which contains the minimum supported
+version of debhelper. Let&rsquo;s set it to 9 (jessie ships version 9).</p>
+
+<pre><code>echo 9 &gt; debian/compat
+</code></pre>
+
+<p>Of course, all packages contain a <code>debian/control</code> file. This file contains the
+most vital information about the source package: Name, priority, maintainer,
+dependencies, descriptions. This info is also shown when you run <code>apt-cache
+show [package]</code>. See here for more info about control files and what each line
+means.</p>
+
+<pre><code>cat debian/control
+Source: koko
+Section: misc
+Priority: optional
+Maintainer: Nikos Kormpakis &lt;nkorb@some.where&gt;
+Build-Depends: debhelper (&gt;= 9)
+Standards-Version: 3.9.6
+
+Package: koko
+Architecture: all
+Description: A dummy package.  
+ A dummy package, created for learning purposes, that just installs
+ some files inside /opt.
+</code></pre>
+
+<p>Now, we have to define the format of our source package. Our package will be a
+non-native Debian package. See here for the difference between native and
+non-native packages. The package format is defined in <code>debian/source/format</code>.
+We&rsquo;ll use version 3.0, the latest one.</p>
+
+<pre><code>mkdir debian/source
+echo &quot;3.0 (quilt)&quot; &gt; debian/source/format
+</code></pre>
+
+<p>Let&rsquo;s add our first entry to our changelog at <code>debian/changelog</code>. In this file
+we will define our package version number and describe what changed in this
+revision. This file will be shipped to the machine that will install the
+package, at <code>/usr/share/doc/koko/changelog.Debian.gz</code>. Debian provides us a
+tool called <code>dch(1)</code>, which eases us with the edit of the changelog file. If
+you prefer, you can also create manually the file:</p>
+
+<pre><code>dch --create -v 1.0-1 --package koko 
+</code></pre>
+
+<p>The file looks like this:</p>
+
+<pre><code>koko (1.0-1) jessie; urgency=medium
+
+  * Initial release.
+
+ -- Nikos Kormpakis &lt;nkorb@some.where&gt;  Sun, 23 Jul 2017 21:43:37 +0300 
+</code></pre>
+
+<p>But why did we use version <code>1.0-1</code> instead of <code>1.0</code>? Remember when we talked about
+native and non-native packages? Debian Policy defines a standard way to define
+a version of a package. As stated in Section 5.6.12 for more) the format of the
+version string is:</p>
+
+<pre><code>The format is: [epoch:]upstream_version[-debian_revision]
+</code></pre>
+
+<p>The tl;dr about versioning is (ignoring epoch for now):</p>
+
+<p>If you&rsquo;re building a non-native package (99% of the time) you must define a
+<code>debian_revision</code>. The <code>debian_revision</code> starts from <code>-1</code> and increases by one
+each time a new version of the package is releases, without changing the
+upstream tarball.  If a new upstream tarball is imported, <code>debian_revision</code>
+started again from <code>-1</code>.  So, must be clear now why we used <code>1.0-1</code> instead of
+<code>1.0</code>. <code>1.0</code> would imply that we&rsquo;re building a native package.</p>
+
+<p>After all that fuzz, let&rsquo;s define what directories must be created by our package:</p>
+
+<pre><code>echo &quot;opt/foo&quot; &gt; debian/koko.dirs
+</code></pre>
+
+<p>This means that during install, the package will create <code>/opt</code> and <code>/opt/foo</code>
+and install our files inside <code>/opt/foo/lala</code>.</p>
+
+<p>Now, let&rsquo;s define which files will be copied during installation:</p>
+
+<pre><code>echo &quot;lala opt/foo&quot; &gt; debian/koko.install
+</code></pre>
+
+<p>The above means that install everything you will find inside source directory
+lala into <code>/opt/foo</code>.</p>
+
+<p>Last (but not least!) step: We need a <code>debian/rules</code> file. This file, (which is
+a Makefile) will be used by <code>dpkg-buildpackage(1)</code> to create the actually
+package.  For now, we&rsquo;ll use a bare simple rules file. For more gory details,
+check Debian&rsquo;s Maintainer Guide, Section 4.4.</p>
+
+<pre><code>#!/usr/bin/make -f
+%:
+        dh $@
+</code></pre>
+
+<p>Please do not use spaces but only tabs. <code>dpkg-buildpackage(1)</code> will complain!</p>
+
+<p>Finally, <code>debian/rules</code> must be marked as executable:</p>
+
+<pre><code>chmod +x debian/rules
+</code></pre>
+
+<p>Now, we&rsquo;re ready to build our package!</p>
+
+<pre><code>dpkg-buildpackage -sa -us -uc
+dpkg-buildpackage: source package koko 
+dpkg-buildpackage: source version 1.0-1
+dpkg-buildpackage: source distribution jessie
+dpkg-buildpackage: source changed by Nikos Kormpakis &lt;nkorb@some.where&gt;
+dpkg-buildpackage: host architecture amd64
+ dpkg-source --before-build koko-1.0 
+ debian/rules clean
+dh clean
+   dh_testdir
+   dh_auto_clean
+   dh_clean
+ dpkg-source -b koko-1.0
+dpkg-source: info: using source format `3.0 (quilt)'
+dpkg-source: info: building koko using existing ./koko_1.0.orig.tar.gz
+dpkg-source: info: building koko in koko_1.0-1.debian.tar.xz
+dpkg-source: info: building koko in koko_1.0-1.dsc
+ debian/rules build
+dh build
+   dh_testdir
+   dh_auto_configure
+   dh_auto_build
+   dh_auto_test
+ debian/rules binary
+dh binary
+   dh_testroot
+   dh_prep
+   dh_installdirs
+   dh_auto_install
+   dh_install
+   dh_installdocs
+   dh_installchangelogs
+   dh_perl
+   dh_link
+   dh_compress
+   dh_fixperms
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: building package `koko' in `../koko_1.0-1_all.deb'.
+ dpkg-genchanges -sa &gt;../koko_1.0-1_amd64.changes
+dpkg-genchanges: including full source code in upload
+ dpkg-source --after-build koko-1.0
+dpkg-buildpackage: full upload (original source is included)
+</code></pre>
+
+<p>After all that stuff, your directory must look something like this:</p>
+
+<pre><code>ls -l
+total 732
+drwxr-xr-x 4 nkorb nkorb    4096 Jul 23 23:12 koko-1.0
+-rw-r--r-- 1 nkorb nkorb     748 Jul 23 23:12 koko_1.0-1.debian.tar.xz
+-rw-r--r-- 1 nkorb nkorb     854 Jul 23 23:12 koko_1.0-1.dsc
+-rw-r--r-- 1 nkorb nkorb  359668 Jul 23 23:12 koko_1.0-1_all.deb
+-rw-r--r-- 1 nkorb nkorb    1584 Jul 23 23:12 koko_1.0-1_amd64.changes
+-rw-r--r-- 1 nkorb nkorb  360569 Jul 23 23:12 koko_1.0.orig.tar.gz
+</code></pre>
+
+<p>So, let&rsquo;s install the package we built.</p>
+
+<pre><code># dpkg -i koko_1.0-1_all.deb 
+Selecting previously unselected package koko.
+(Reading database ... 295273 files and directories currently installed.)
+Preparing to unpack koko_1.0-1_all.deb ...
+Unpacking koko (1.0-1) ...
+Setting up koko (1.0-1) ...
+
+tree /opt/foo
+/opt/foo
+└── lala
+    ├── file0.html
+    ├── file1.html
+    └── file2.html
+
+1 directory, 3 files
+</code></pre>
+
+<p>Exactly as we expected! :) Many credits to the writers of the <a href="https://wiki.debian.org/Packaging/Intro">Debian Packaging
+Intro</a>!</p>
+
+<p>Finally, there are some links about Debian packaging, if you&rsquo;re interested:</p>
+
+<p><a href="https://www.debian.org/doc/manuals/maint-guide/">Debian New Maintainers&rsquo; Guide</a></p>
+
+<p><a href="https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf">Debian Packaging Tutorial by Lucas Nussbaum</a></p>
+
+<p><a href="https://www.debian.org/doc/debian-policy/">Debian Policy</a></p>
+
+<p>Have fun packaging!</p>
+
+</article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="https://nkorb.gr/blog/ceph-grnet-presentation/">
+		<img class="icon-text" src="/img/prev.svg"/>Ceph in the GRNET cloud stack</a>
+
+
+	<a class="next-post" href="https://nkorb.gr/blog/discovering-iproute2/">Discovering new iproute2 features (Part I)<img class="icon-text" src="/img/next.svg"/>
+	</a>
+
+</nav>
+
+
+
+
+			<hr class="sep" />
+		</main>
+		<footer class="container no-print">
+			<div class="u-footer">
+				
+<a href="mailto:nkorb%28&#43;b%29%20_at_%20%28google%27s%20mail%29%20%28dot%29%20com"><img class="icon-social" src="/img/email.svg" alt="Email Me!"/></a>
+
+
+<a href="https://github.com/nkorb"><img class="icon-social" src="/img/github.svg" alt="Github"/></a>
+
+
+<a href="https://twitter.com/nkorbbb"><img class="icon-social" src="/img/twitter.svg" alt="Twitter"/></a>
+
+
+<a href="https://www.linkedin.com/in/nkorb/"><img class="icon-social" src="/img/linkedin.png" alt="LinkedIn"/></a>
+
+<a href="https://nkorb.gr/index.xml" target="_blank"><img class="icon-social" src="/img/feed.svg" alt="Feed"></a>
+
+				<p>
+					
+					
+					&copy; 2018 Nikos Kormpakis
+					
+					
+					| <a href="https://creativecommons.org/licenses/by-nc-sa/4.0">License</a>
+					
+				</p>
+				
+				<a href="#brand">
+					<img class="icon-text" src="/img/toup.svg" alt="To Up"/>
+					<span>Back to Up</span>
+				</a>
+				
+			</div>
+		</footer>
+		
+	</body>
+</html>
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>/home/nkorb</title>
+    <link>https://nkorb.gr/</link>
+    <description>Recent content on /home/nkorb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2018 Nikos Kormpakis</copyright>
+    <lastBuildDate>Mon, 28 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://nkorb.gr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Discovering new iproute2 features (Part I)</title>
+      <link>https://nkorb.gr/blog/discovering-iproute2/</link>
+      <pubDate>Mon, 28 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://nkorb.gr/blog/discovering-iproute2/</guid>
+      <description>iproute2 is the standard networking toolbox for Linux, deprecating the unmaintained net-tools. iproute2 includes the known ip tool, which most admins and engineers use almost every day in order to see and manipulate a host&amp;rsquo;s network configuration. Today, I&amp;rsquo;m going to present some nice (and sometimes undocumented) features of ip that I was not aware of until lately.
+The following commands were all tested on a Debian Stretch box, running iproute2 version 4.</description>
+    </item>
+    
+    <item>
+      <title>Creating a Debian package from scratch</title>
+      <link>https://nkorb.gr/blog/debian-package-scratch/</link>
+      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://nkorb.gr/blog/debian-package-scratch/</guid>
+      <description>At work, we use exclusively Debian across our fleet. We try to keep up with the latest stable distribution, without relying on third-party repositories. Also, we try to package every piece of software we&amp;rsquo;re installing on our boxes, including our IaaS cloud software Synnefo and tools that are not found in upstream Debian repos (i.e. check_mk). So, it is not uncommon that we have to create a Debian deb package from scratch.</description>
+    </item>
+    
+    <item>
+      <title>Ceph in the GRNET cloud stack</title>
+      <link>https://nkorb.gr/blog/ceph-grnet-presentation/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://nkorb.gr/blog/ceph-grnet-presentation/</guid>
+      <description>Before some months, I did a presentation on GRNET&amp;rsquo;s Ceph deployments at the 1st GEANT SIG-CISS meeting. If you&amp;rsquo;re interested on how we run Ceph (or maybe, how we used to run it in September 2017), here are the slides of the presentation:
+ </description>
+    </item>
+    
+    <item>
+      <title>Hunting a bug in Debian&#39;s cron package (Part I)</title>
+      <link>https://nkorb.gr/blog/cron-bug-part-1/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://nkorb.gr/blog/cron-bug-part-1/</guid>
+      <description>I started writing this post initially about a bug (is it really a bug?) in Debian&amp;rsquo;s cron implementation (Vixie Cron plus some patches). Along the way, I noticed that a fix for this &amp;ldquo;bug&amp;rdquo; might not be easy&amp;hellip;
+One annoying thing when getting emails from cron, is that you somethimes you cannot determine which is the problematic host. At work we use a naming scheme for some hosts which looks like this: $role$number.</description>
+    </item>
+    
+    <item>
+      <title>whoami</title>
+      <link>https://nkorb.gr/whoami/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://nkorb.gr/whoami/</guid>
+      <description>My name is Nikos Kormpakis and I&amp;rsquo;m from Greece, currently living in Athens. If you&amp;rsquo;re curious, my name in Greek is Νίκος Κορμπάκης.
+My interests revolve around computing in general, especially infrastructure and complex systems. When not messing around with computers, you will find me shooting with my Nikon D7200, DJing with my Pioneer DDJ SB2, operating my noobish V/U Amateur Radio transceivers as SV1QYH, talking about Greek politics and Free Software.</description>
+    </item>
+    
+    <item>
+      <title>Hello World!</title>
+      <link>https://nkorb.gr/blog/welcome/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://nkorb.gr/blog/welcome/</guid>
+      <description>Hello world!
+My name is Nikos Kormpakis and this is my first post.
+I decided to create this small blog in order to &amp;ldquo;claim&amp;rdquo; my little corner in the cyberspace :). In this blog, I’ll share my opinions and experiences with the stuff I mess around: Computers, music, politics, photography, free software, amateur radio, etc.
+I’ll try to write most of the time in English but you may encounter some Greek posts :).</description>
+    </item>
+    
+  </channel>
+</rss>
