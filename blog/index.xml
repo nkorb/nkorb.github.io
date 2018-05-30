@@ -6,10 +6,19 @@
     <description>Recent content in Blog on /home/nkorb</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2018 Nikos Kormpakis</copyright>
-    <lastBuildDate>Mon, 28 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nkorb.gr/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Open sourcing GRNET&#39;s Ceph tools</title>
+      <link>https://blog.nkorb.gr/blog/grnet-cephtools/</link>
+      <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nkorb.gr/blog/grnet-cephtools/</guid>
+      <description>I&amp;rsquo;m not afraid to say that I really like Ceph. It&amp;rsquo;s one of the first distributed systems that I got in touch with and I really enjoy working and providing useful services with it. But as all large and complex systems, it tends to get quickly difficult to perform operations on it. For that reason, my team invested some time and wrote a bunch of useful tools that we use in order to manage our Ceph clusters.</description>
+    </item>
     
     <item>
       <title>Discovering iproute2 features (Part I)</title>
