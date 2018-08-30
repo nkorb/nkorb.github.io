@@ -6,10 +6,20 @@
     <description>Recent content on /home/nkorb</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2018 Nikos Kormpakis</copyright>
-    <lastBuildDate>Wed, 30 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nkorb.gr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A performance story: How a faulty QSFP crippled a Ceph cluster</title>
+      <link>https://blog.nkorb.gr/blog/ceph-qsfp/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nkorb.gr/blog/ceph-qsfp/</guid>
+      <description>At work, we encountered a strange case of performance degradation on one of our production Ceph clusters which provides storage to our public cloud ~okeanos.
+We wrote a post at our tech blog, explaining the problem, our debugging journey, how we solved it and what we&amp;rsquo;ve done for the future. Long story short, a QSFP in the underlying network infrastructure, introduced huge packet loss and caused performance issues to our cloud.</description>
+    </item>
     
     <item>
       <title>Open sourcing GRNET&#39;s Ceph tools</title>

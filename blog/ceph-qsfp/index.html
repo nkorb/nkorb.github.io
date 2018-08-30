@@ -4,9 +4,10 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="generator" content="Hugo 0.41" />
-		<title>Blog - /home/nkorb</title>
+		<title>A performance story: How a faulty QSFP crippled a Ceph cluster - /home/nkorb</title>
 
-		<meta name="description" content="">
+		<meta name="description" content="At work, we encountered a strange case of performance degradation on one of our production Ceph clusters which provides storage to our public cloud ~okeanos.
+We wrote a post at our tech blog, explaining the problem, our debugging journey, how we solved it and what we&rsquo;ve done for the future. Long story short, a QSFP in the underlying network infrastructure, introduced huge packet loss and caused performance issues to our cloud.">
 
 
 		
@@ -55,70 +56,44 @@
 <main class="container">
 
 <article>
-	<header>
-		<hgroup id="brand">
-	<h1>Blog</h1>
+	<header><hgroup id="brand">
+	<h1>A performance story: How a faulty QSFP crippled a Ceph cluster</h1>
+	<h5>
+		
+		<time datetime="2018-08-30 00:00:00 &#43;0000 UTC">Aug 30, 2018</time>
+		<span class="no-print">
+			<span>
+	</h5>
 	
 </hgroup>
 <hr class="sep" />
+</header>
+	<p>At <a href="https://grnet.gr">work</a>, we encountered a strange case of performance
+degradation on one of our production <a href="https://ceph.com">Ceph</a> clusters
+which provides storage to our public cloud
+<a href="https://okeanos.grnet.gr">~okeanos</a>.</p>
 
-		
-	</header>
-	<ul class="no-bullet">
-	    
-	    <li>
-	
-	<span><time datetime="2018-08-30 00:00:00 &#43;0000 UTC">Aug 30, 2018</time></span>
-	<a href="/blog/ceph-qsfp/">A performance story: How a faulty QSFP crippled a Ceph cluster</a>
-</li>
+<p>We wrote a post at our <a href="https://blog.noc.grnet.gr">tech blog</a>, explaining
+the problem, our debugging journey, how we solved it and what we&rsquo;ve done
+for the future. Long story short, a QSFP in the underlying network
+infrastructure, introduced huge packet loss and caused performance
+issues to our cloud. Of course, it was not Ceph&rsquo;s fault :).</p>
 
-	    
-	    <li>
-	
-	<span><time datetime="2018-05-30 00:00:00 &#43;0000 UTC">May 30, 2018</time></span>
-	<a href="/blog/grnet-cephtools/">Open sourcing GRNET&#39;s Ceph tools</a>
-</li>
-
-	    
-	    <li>
-	
-	<span><time datetime="2018-05-28 00:00:00 &#43;0000 UTC">May 28, 2018</time></span>
-	<a href="/blog/iproute2-feat-p1/">Discovering iproute2 features (Part I)</a>
-</li>
-
-	    
-	    <li>
-	
-	<span><time datetime="2018-05-21 00:00:00 &#43;0000 UTC">May 21, 2018</time></span>
-	<a href="/blog/debian-package-scratch/">Creating a Debian package from scratch</a>
-</li>
-
-	    
-	    <li>
-	
-	<span><time datetime="2018-05-19 00:00:00 &#43;0000 UTC">May 19, 2018</time></span>
-	<a href="/blog/ceph-grnet-presentation/">Ceph in the GRNET cloud stack</a>
-</li>
-
-	    
-	    <li>
-	
-	<span><time datetime="2018-05-19 00:00:00 &#43;0000 UTC">May 19, 2018</time></span>
-	<a href="/blog/cron-bug-part-1/">Hunting a bug in Debian&#39;s cron package (Part I)</a>
-</li>
-
-	    
-	    <li>
-	
-	<span><time datetime="2018-05-01 00:00:00 &#43;0000 UTC">May 01, 2018</time></span>
-	<a href="/blog/welcome/">Hello World!</a>
-</li>
-
-	    
-	</ul>
-	
+<p>The post can be found
+<a href="https://blog.noc.grnet.gr/2018/08/29/a-performance-story-how-a-faulty-qsfp-crippled-a-whole-ceph-cluster/">here</a>.</p>
 
 </article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="https://blog.nkorb.gr/blog/grnet-cephtools/">
+		<img class="icon-text" src="/img/prev.svg"/>Open sourcing GRNET&#39;s Ceph tools</a>
+
+
+</nav>
+
+
+
+
 			<hr class="sep" />
 		</main>
 		<footer class="container no-print">
