@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://blog.nkorb.gr/whoami/</loc>
+    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.nkorb.gr/blog/ceph-qsfp/</loc>
     <lastmod>2018-08-30T00:00:00+00:00</lastmod>
   </url>
@@ -34,11 +39,6 @@
   
   <url>
     <loc>https://blog.nkorb.gr/blog/cron-bug-part-1/</loc>
-    <lastmod>2018-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nkorb.gr/whoami/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
   </url>
   

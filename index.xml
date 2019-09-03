@@ -5,7 +5,7 @@
     <link>https://blog.nkorb.gr/</link>
     <description>Recent content on /home/nkorb</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2018 Nikos Kormpakis</copyright>
+    <copyright>&amp;copy; 2019 Nikos Kormpakis</copyright>
     <lastBuildDate>Tue, 03 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nkorb.gr/index.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,16 @@
       <guid>https://blog.nkorb.gr/blog/vms-not-booting/</guid>
       <description>At work, we manage a fleet of bare metal servers and virtual machines, running Debian GNU/Linux. Upgrades to a new major are often very challenging; not because of the actual upgrade path, but because of the unwanted side-effects that noone had predicted.
 One of these side-effects was: &amp;ldquo;Why this shiny Buster VM takes 5 minutes to boot?&amp;ldquo;. Together with my colleague Alexandros Afentoulis, we figured out the issue, fixed it and wrote a post about it.</description>
+    </item>
+    
+    <item>
+      <title>whoami</title>
+      <link>https://blog.nkorb.gr/whoami/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nkorb.gr/whoami/</guid>
+      <description>My name is Nikos Kormpakis and I&amp;rsquo;m from Greece, currently living in Athens. If you&amp;rsquo;re curious, my name in Greek is Νίκος Κορμπάκης.
+My interests revolve around computing in general, especially infrastructure and complex systems. When not messing around with computers, you will find me shooting with my Nikon D7200, DJing with my Pioneer DDJ SB2, operating my noobish V/U Amateur Radio transceivers as SV1QYH, talking about Greek politics and Free Software.</description>
     </item>
     
     <item>
@@ -77,16 +87,6 @@ The following commands were all tested on a Debian Stretch box, running iproute2
       <guid>https://blog.nkorb.gr/blog/cron-bug-part-1/</guid>
       <description>I started writing this post initially about a bug (is it really a bug?) in Debian&amp;rsquo;s cron implementation (Vixie Cron plus some patches). Along the way, I noticed that a fix for this &amp;ldquo;bug&amp;rdquo; might not be easy&amp;hellip;
 One annoying thing when getting emails from cron, is that you somethimes you cannot determine which is the problematic host. At work we use a naming scheme for some hosts which looks like this: $role$number.</description>
-    </item>
-    
-    <item>
-      <title>whoami</title>
-      <link>https://blog.nkorb.gr/whoami/</link>
-      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.nkorb.gr/whoami/</guid>
-      <description>My name is Nikos Kormpakis and I&amp;rsquo;m from Greece, currently living in Athens. If you&amp;rsquo;re curious, my name in Greek is Νίκος Κορμπάκης.
-My interests revolve around computing in general, especially infrastructure and complex systems. When not messing around with computers, you will find me shooting with my Nikon D7200, DJing with my Pioneer DDJ SB2, operating my noobish V/U Amateur Radio transceivers as SV1QYH, talking about Greek politics and Free Software.</description>
     </item>
     
     <item>
