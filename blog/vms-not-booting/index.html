@@ -4,10 +4,10 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="generator" content="Hugo 0.54.0" />
-		<title>A performance story: How a faulty QSFP crippled a Ceph cluster - /home/nkorb</title>
+		<title>VMs available in &gt;5 minutes after upgrading Debian. Why? - /home/nkorb</title>
 
-		<meta name="description" content="At work, we encountered a strange case of performance degradation on one of our production Ceph clusters which provides storage to our public cloud ~okeanos.
-We wrote a post at our tech blog, explaining the problem, our debugging journey, how we solved it and what we&rsquo;ve done for the future. Long story short, a QSFP in the underlying network infrastructure, introduced huge packet loss and caused performance issues to our cloud.">
+		<meta name="description" content="At work, we manage a fleet of bare metal servers and virtual machines, running Debian GNU/Linux. Upgrades to a new major are often very challenging; not because of the actual upgrade path, but because of the unwanted side-effects that noone had predicted.
+One of these side-effects was: &ldquo;Why this shiny Buster VM takes 5 minutes to boot?&ldquo;. Together with my colleague Alexandros Afentoulis, we figured out the issue, fixed it and wrote a post about it.">
 
 
 		
@@ -57,10 +57,10 @@ We wrote a post at our tech blog, explaining the problem, our debugging journey,
 
 <article>
 	<header><hgroup id="brand">
-	<h1>A performance story: How a faulty QSFP crippled a Ceph cluster</h1>
+	<h1>VMs available in &gt;5 minutes after upgrading Debian. Why?</h1>
 	<h5>
 		
-		<time datetime="2018-08-30 00:00:00 &#43;0000 UTC">Aug 30, 2018</time>
+		<time datetime="2019-09-03 00:00:00 &#43;0000 UTC">Sep 03, 2019</time>
 		<span class="no-print">
 			<span>
 	</h5>
@@ -68,29 +68,26 @@ We wrote a post at our tech blog, explaining the problem, our debugging journey,
 </hgroup>
 <hr class="sep" />
 </header>
-	<p>At <a href="https://grnet.gr">work</a>, we encountered a strange case of performance
-degradation on one of our production <a href="https://ceph.com">Ceph</a> clusters
-which provides storage to our public cloud
-<a href="https://okeanos.grnet.gr">~okeanos</a>.</p>
+	<p>At <a href="https://www.skroutz.gr">work</a>, we manage a fleet of bare metal servers and
+virtual machines, running Debian GNU/Linux. Upgrades to a new major are often
+very challenging; not because of the actual upgrade path, but because of the
+unwanted side-effects that noone had predicted.</p>
 
-<p>We wrote a post at our <a href="https://blog.noc.grnet.gr">tech blog</a>, explaining
-the problem, our debugging journey, how we solved it and what we&rsquo;ve done
-for the future. Long story short, a QSFP in the underlying network
-infrastructure, introduced huge packet loss and caused performance
-issues to our cloud. Of course, it was not Ceph&rsquo;s fault :).</p>
+<p>One of these side-effects was: &ldquo;Why this shiny Buster VM takes 5 minutes to
+boot?&ldquo;. Together with my colleague
+<a href="https://alexaf.gitlab.io/">Alexandros Afentoulis</a>, we figured out the issue,
+fixed it and wrote a post about it. The real root cause is a number of changes
+that happened to Debian GNU/Linux regarding entropy gathering (!).</p>
 
-<p>The post can be found
-<a href="https://blog.noc.grnet.gr/2018/08/29/a-performance-story-how-a-faulty-qsfp-crippled-a-whole-ceph-cluster/">here</a>.</p>
+<p>You can find our work on Alexandros&rsquo; blog
+<a href="https://alexaf.gitlab.io/posts/linux_early_entropy_starvation_buster/">here</a>.</p>
 
 </article>
 <nav class="no-print post-nav">
 
-	<a class="prev-post" href="https://blog.nkorb.gr/blog/grnet-cephtools/">
-		<img class="icon-text" src="/img/prev.svg"/>Open sourcing GRNET&#39;s Ceph tools</a>
+	<a class="prev-post" href="https://blog.nkorb.gr/blog/ceph-qsfp/">
+		<img class="icon-text" src="/img/prev.svg"/>A performance story: How a faulty QSFP crippled a Ceph cluster</a>
 
-
-	<a class="next-post" href="https://blog.nkorb.gr/blog/vms-not-booting/">VMs available in &gt;5 minutes after upgrading Debian. Why?<img class="icon-text" src="/img/next.svg"/>
-	</a>
 
 </nav>
 

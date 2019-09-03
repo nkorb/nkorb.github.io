@@ -6,10 +6,20 @@
     <description>Recent content on /home/nkorb</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2018 Nikos Kormpakis</copyright>
-    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nkorb.gr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>VMs available in &gt;5 minutes after upgrading Debian. Why?</title>
+      <link>https://blog.nkorb.gr/blog/vms-not-booting/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nkorb.gr/blog/vms-not-booting/</guid>
+      <description>At work, we manage a fleet of bare metal servers and virtual machines, running Debian GNU/Linux. Upgrades to a new major are often very challenging; not because of the actual upgrade path, but because of the unwanted side-effects that noone had predicted.
+One of these side-effects was: &amp;ldquo;Why this shiny Buster VM takes 5 minutes to boot?&amp;ldquo;. Together with my colleague Alexandros Afentoulis, we figured out the issue, fixed it and wrote a post about it.</description>
+    </item>
     
     <item>
       <title>A performance story: How a faulty QSFP crippled a Ceph cluster</title>
