@@ -6,10 +6,21 @@
     <description>Recent content on /home/nkorb</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Nikos Kormpakis</copyright>
-    <lastBuildDate>Tue, 03 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nkorb.gr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Μια φωτογραφία απευθείας από το διάστημα</title>
+      <link>https://blog.nkorb.gr/blog/2019-09-08-iss-sstv/</link>
+      <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nkorb.gr/blog/2019-09-08-iss-sstv/</guid>
+      <description>Η πρώτη μου φωτογραφία από το διάστημα :)
+  Μια φορά και έναν καιρό κάπου στο διάστημα To 1983, ένας αστροναύτης εν ονόματι Owen Garriott, ετοιμαζόταν για μια αποστολή στο διάστημα στον Skylab, τον πρόγονο του ISS. Η αποστολή περιείχε διάφορα πραγματάκια, όπως παρατήρηση της γης, μερικά επιστημονικά πειράματα, κλπ. Όμως, εκείνη η αποστολή είχε κάτι το διαφορετικό.
+Όπως σε κάθε μεγάλο ταξίδι, ο κόσμος παίρνει μαζί του τα αγαπημένα του πράγματα, φωτογραφίες, βιβλία και τα σχετικά.</description>
+    </item>
     
     <item>
       <title>VMs available in &gt;5 minutes after upgrading Debian. Why?</title>
