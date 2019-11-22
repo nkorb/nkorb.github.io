@@ -6,10 +6,21 @@
     <description>Recent content on /home/nkorb</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Nikos Kormpakis</copyright>
-    <lastBuildDate>Sun, 08 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nkorb.gr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>whoami</title>
+      <link>https://blog.nkorb.gr/whoami/</link>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nkorb.gr/whoami/</guid>
+      <description>My name is Nikos Kormpakis and I&amp;rsquo;m from Greece, currently living in Athens. If you&amp;rsquo;re curious, my name in Greek is Νίκος Κορμπάκης.
+My interests revolve around computing in general, especially infrastructure and complex systems. When not messing around with computers, you will find me shooting with my Nikon D7200, DJing with my Pioneer DDJ SB2, operating my U/V Amateur Radio transceivers as SV1QYH.
+I currently work as a Systems Engineer at GRNET, Greece&amp;rsquo;s National Research and Educational Network.</description>
+    </item>
     
     <item>
       <title>Μια φωτογραφία απευθείας από το διάστημα</title>
@@ -30,16 +41,6 @@
       <guid>https://blog.nkorb.gr/blog/vms-not-booting/</guid>
       <description>At work, we manage a fleet of bare metal servers and virtual machines, running Debian GNU/Linux. Upgrades to a new major are often very challenging; not because of the actual upgrade path, but because of the unwanted side-effects that noone had predicted.
 One of these side-effects was: &amp;ldquo;Why this shiny Buster VM takes 5 minutes to boot?&amp;ldquo;. Together with my colleague Alexandros Afentoulis, we figured out the issue, fixed it and wrote a post about it.</description>
-    </item>
-    
-    <item>
-      <title>whoami</title>
-      <link>https://blog.nkorb.gr/whoami/</link>
-      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.nkorb.gr/whoami/</guid>
-      <description>My name is Nikos Kormpakis and I&amp;rsquo;m from Greece, currently living in Athens. If you&amp;rsquo;re curious, my name in Greek is Νίκος Κορμπάκης.
-My interests revolve around computing in general, especially infrastructure and complex systems. When not messing around with computers, you will find me shooting with my Nikon D7200, DJing with my Pioneer DDJ SB2, operating my noobish V/U Amateur Radio transceivers as SV1QYH, talking about Greek politics and Free Software.</description>
     </item>
     
     <item>
